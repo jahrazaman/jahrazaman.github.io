@@ -5,94 +5,128 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jahra Zaman | Portfolio</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Segoe UI', sans-serif;
-    }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
 
-    body {
-        background: #0f172a;
-        color: #e2e8f0;
-        line-height: 1.6;
-    }
+body {
+    background: linear-gradient(120deg, #0f172a, #1e293b);
+    color: #e2e8f0;
+    overflow-x: hidden;
+}
 
-    header {
-        text-align: center;
-        padding: 50px 20px;
-        background: linear-gradient(135deg, #6366f1, #06b6d4);
-        color: white;
-    }
+/* HEADER */
+header {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle, #6366f1, #0f172a);
+    text-align: center;
+}
 
-    header h1 {
-        font-size: 2.5rem;
-    }
+header h1 {
+    font-size: 3rem;
+    animation: fadeInDown 1s ease-in-out;
+}
 
-    header p {
-        margin-top: 10px;
-        font-size: 1.1rem;
-    }
+header p {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    animation: fadeInUp 1.5s ease-in-out;
+}
 
-    .container {
-        max-width: 1000px;
-        margin: auto;
-        padding: 20px;
-    }
+.btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #06b6d4;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+    transition: 0.3s;
+}
 
-    section {
-        margin: 30px 0;
-    }
+.btn:hover {
+    background: #22d3ee;
+    transform: scale(1.05);
+}
 
-    h2 {
-        border-left: 5px solid #06b6d4;
-        padding-left: 10px;
-        margin-bottom: 15px;
-    }
+/* SECTIONS */
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 40px 20px;
+}
 
-    .card {
-        background: #1e293b;
-        padding: 15px;
-        border-radius: 10px;
-        margin-bottom: 10px;
-        transition: 0.3s;
-    }
+section {
+    margin: 50px 0;
+}
 
-    .card:hover {
-        transform: translateY(-5px);
-        background: #334155;
-    }
+/* GLASS CARD */
+.card {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    transition: 0.3s;
+    opacity: 0;
+    transform: translateY(30px);
+}
 
-    ul {
-        list-style: none;
-    }
+.card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
 
-    ul li {
-        margin: 8px 0;
-    }
+.card:hover {
+    transform: scale(1.03);
+    background: rgba(255,255,255,0.1);
+}
 
-    .skills span {
-        display: inline-block;
-        background: #06b6d4;
-        color: black;
-        padding: 5px 10px;
-        margin: 5px;
-        border-radius: 20px;
-        font-size: 0.9rem;
-    }
+/* HEADINGS */
+h2 {
+    margin-bottom: 15px;
+    color: #38bdf8;
+}
 
-    footer {
-        text-align: center;
-        padding: 20px;
-        margin-top: 40px;
-        border-top: 1px solid #334155;
-    }
+/* SKILLS */
+.skills span {
+    display: inline-block;
+    padding: 8px 15px;
+    margin: 5px;
+    border-radius: 20px;
+    background: #06b6d4;
+    color: black;
+    font-size: 0.9rem;
+}
 
-    a {
-        color: #38bdf8;
-        text-decoration: none;
-    }
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #334155;
+}
+
+/* ANIMATIONS */
+@keyframes fadeInDown {
+    from {opacity:0; transform: translateY(-30px);}
+    to {opacity:1; transform: translateY(0);}
+}
+
+@keyframes fadeInUp {
+    from {opacity:0; transform: translateY(30px);}
+    to {opacity:1; transform: translateY(0);}
+}
 </style>
 </head>
 
@@ -100,71 +134,90 @@
 
 <header>
     <h1>Jahra Zaman</h1>
-    <p>Student | Flutter Developer | ML Enthusiast</p>
+    <p>Flutter Developer | ML Enthusiast</p>
+    <button class="btn" onclick="scrollToSection()">Explore</button>
 </header>
 
-<div class="container">
+<div class="container" id="content">
 
-    <section>
-        <h2>👩‍💻 About Me</h2>
-        <div class="card">
-            <p>
-                I am a passionate CSE student interested in mobile app development,
-                machine learning, and building real-world solutions.
-            </p>
-        </div>
-    </section>
+<section>
+    <h2>👩‍💻 About Me</h2>
+    <div class="card">
+        Passionate CSE student focused on mobile apps, machine learning, 
+        and solving real-world problems with technology.
+    </div>
+</section>
 
-    <section>
-        <h2>🚀 Projects</h2>
+<section>
+    <h2>🚀 Projects</h2>
 
-        <div class="card">
-            <h3>📚 Library Management App</h3>
-            <p>Flutter app with login, book borrow/return, and customer management.</p>
-        </div>
+    <div class="card">
+        <h3>📚 Library Management App</h3>
+        <p>Flutter app with login, borrowing system, and customer management.</p>
+    </div>
 
-        <div class="card">
-            <h3>💸 No-Spend Tracker</h3>
-            <p>Helps users track daily spending habits and reduce unnecessary expenses.</p>
-        </div>
+    <div class="card">
+        <h3>💸 No-Spend Tracker</h3>
+        <p>Tracks daily expenses and improves saving habits.</p>
+    </div>
 
-        <div class="card">
-            <h3>🌾 Farming Assistant App</h3>
-            <p>Provides crop suggestions, expense tracking, and weather alerts.</p>
-        </div>
-    </section>
+    <div class="card">
+        <h3>🌾 Farming Assistant</h3>
+        <p>Crop suggestions, weather alerts, and expense tracking.</p>
+    </div>
 
-    <section>
-        <h2>🛠 Skills</h2>
-        <div class="skills">
-            <span>Flutter</span>
-            <span>Python</span>
-            <span>Machine Learning</span>
-            <span>Firebase</span>
-            <span>HTML & CSS</span>
-        </div>
-    </section>
+</section>
 
-    <section>
-        <h2>🎓 Education</h2>
-        <div class="card">
-            <p>BSc in Computer Science & Engineering</p>
-        </div>
-    </section>
+<section>
+    <h2>🛠 Skills</h2>
+    <div class="card skills">
+        <span>Flutter</span>
+        <span>Python</span>
+        <span>Machine Learning</span>
+        <span>Firebase</span>
+        <span>HTML & CSS</span>
+    </div>
+</section>
 
-    <section>
-        <h2>📬 Contact</h2>
-        <div class="card">
-            <p>Email: your@email.com</p>
-            <p>GitHub: <a href="#">your-github-link</a></p>
-        </div>
-    </section>
+<section>
+    <h2>🎓 Education</h2>
+    <div class="card">
+        BSc in Computer Science & Engineering
+    </div>
+</section>
+
+<section>
+    <h2>📬 Contact</h2>
+    <div class="card">
+        Email: your@email.com <br>
+        GitHub: your-link
+    </div>
+</section>
 
 </div>
 
 <footer>
-    <p>© 2026 Jahra Zaman</p>
+    © 2026 Jahra Zaman
 </footer>
+
+<script>
+// scroll button
+function scrollToSection() {
+    document.getElementById("content").scrollIntoView({ behavior: "smooth" });
+}
+
+// scroll animation
+const cards = document.querySelectorAll('.card');
+
+window.addEventListener('scroll', () => {
+    cards.forEach(card => {
+        const cardTop = card.getBoundingClientRect().top;
+        if(cardTop < window.innerHeight - 100){
+            card.classList.add('show');
+        }
+    });
+});
+</script>
 
 </body>
 </html>
